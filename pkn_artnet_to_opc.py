@@ -4,7 +4,7 @@ Project: PKN Lighted dance floor / LED Art
 """
 
 # Fadecandy stuff
-# import opc
+import opc
 
 # Artnet stuff
 from twisted.internet import protocol, endpoints
@@ -14,12 +14,13 @@ import time
 
 leds_per_universe = 128
 numLEDs = 2048
-dry_run_client = True
+dry_run_client = False
 
 if dry_run_client:
     print "initialize OPC socket..."
 else:
-    client = opc.Client('localhost:7890')
+    client = opc.Client('10.0.1.111:7890')
+    print "OPC client created."
 black = (0, 0, 0)
 
 ## Calculate some derived parameters:
