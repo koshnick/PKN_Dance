@@ -40,6 +40,7 @@ class ArtNet(DatagramProtocol):
 
     def write_universe(self, universe_id, universe_pixels):
         global_offset = leds_per_universe*universe_id
+        #print "Setting pixels [%d:%d] numpixels %d" % (global_offset, global_offset+leds_per_universe, len(universe_pixels))
         self.pixels[global_offset:global_offset+leds_per_universe] = universe_pixels
         self.universe_received[universe_id] = True
         if all(self.universe_received):
@@ -52,7 +53,7 @@ class ArtNet(DatagramProtocol):
                 self.time_of_first_flush = time.time()
             elif self.opc_write_count % 200 == 0:
                 rate = self.opc_write_count / (time.time()-self.time_of_first_flush)
-                print "Average number of OPC writes per second: %f" % rate
+                #print "Average number of OPC writes per second: %f" % rate
             self.opc_write_count += 1
             self.universe_received = [False] * num_universes
 
@@ -67,9 +68,10 @@ class ArtNet(DatagramProtocol):
                 physical = rawbytes[13]
                 sub_net = (rawbytes[14] & 0xF0) >> 4
                 universe = rawbytes[14] & 0x0F
+                universe = 15 if universe == 0 else universe-1
                 net = rawbytes[15]
                 rgb_length = (rawbytes[16] << 8) + rawbytes[17]
-                # print "seq %d phy %d sub_net %d uni %d net %d len %d" % \
+                #print "seq %d phy %d sub_net %d uni %d net %d len %d" % \
                 #    (sequence, physical, sub_net, universe, net, rgb_length)
                 idx = 18
                 universe_pixels = [black] * leds_per_universe
