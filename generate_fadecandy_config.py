@@ -33,7 +33,7 @@ Q_NW
         },
         {
             "type": "fadecandy",
-            "serial": "...",
+            "serial": "XLOYSOJDRNKYYARZ",
             "map": [
 Q_NE
             ]

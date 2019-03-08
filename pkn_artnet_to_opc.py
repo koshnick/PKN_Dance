@@ -12,6 +12,7 @@ from twisted.internet.protocol import DatagramProtocol
 from twisted.internet import reactor
 import time
 
+opc_addr = "127.0.0.1:7890"
 leds_per_universe = 128
 numLEDs = 2048
 dry_run_client = False
@@ -19,8 +20,9 @@ dry_run_client = False
 if dry_run_client:
     print "initialize OPC socket..."
 else:
-    client = opc.Client('10.0.1.111:7890')
-    print "OPC client created."
+    client = opc.Client(opc_addr)
+    if not client.can_connect():
+		raise Exception('unable to connect'	)
 black = (0, 0, 0)
 
 ## Calculate some derived parameters:
@@ -85,6 +87,6 @@ class ArtNet(DatagramProtocol):
                     universe_offset += 1
                 self.write_universe(universe, universe_pixels)
 
-
+	
 reactor.listenUDP(6454, ArtNet())
 reactor.run()

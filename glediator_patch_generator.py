@@ -4,12 +4,14 @@ Project: PKN Lighted dance floor / LED Art
 """
 
 # Optionally, redirect sstandard output to file:
-
 import sys
-f = open('C:/Users/brendep/Documents/PKN/glediator-patch-v1.txt', 'w')
+import codecs
+
+filepath_and_name = sys.argv[1]
+f = codecs.open(filepath_and_name, 'w', 'utf-8')
 sys.stdout = f
 
-artnet_host = '10.55.117.138'
+artnet_host = '127.0.0.1'
 pixels_per_universe = 128
 x_size = 64
 y_size = 32
