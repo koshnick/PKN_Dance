@@ -28,28 +28,28 @@ json_template = """
             "type": "fadecandy",
             "serial": "IIJRDVHBZJSEIEFL",
             "map": [
-Q_NW
+Q_SE
             ]
         },
         {
             "type": "fadecandy",
             "serial": "XLOYSOJDRNKYYARZ",
             "map": [
-Q_NE
+Q_SW
             ]
         },
         {
             "type": "fadecandy",
             "serial": "VPWYRFOMPNASAQXT",
             "map": [
-Q_SW
+Q_NE
             ]
         },
         {
             "type": "fadecandy",
             "serial": "ZRGUDLCUZHEMSSJZ",
             "map": [
-Q_SE
+Q_NW
             ]
         }
     ]
@@ -85,7 +85,7 @@ def render_quadrant(q_vertical, q_horiz, pins_go_upward, bus_is_on_right, pairs_
     
     
 render_quadrant(0, 0, pins_go_upward=1, bus_is_on_right=1, pairs_are_flipped=1, json_placeholder="Q_NW")
-render_quadrant(0, 1, pins_go_upward=1, bus_is_on_right=1, pairs_are_flipped=1, json_placeholder="Q_NE")
+render_quadrant(0, 1, pins_go_upward=0, bus_is_on_right=0, pairs_are_flipped=1, json_placeholder="Q_NE")
 render_quadrant(1, 0, pins_go_upward=1, bus_is_on_right=1, pairs_are_flipped=1, json_placeholder="Q_SW")
 render_quadrant(1, 1, pins_go_upward=0, bus_is_on_right=0, pairs_are_flipped=1, json_placeholder="Q_SE")
 
