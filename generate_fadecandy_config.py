@@ -26,7 +26,7 @@ json_template = """
     "devices": [
         {
             "type": "fadecandy",
-            "serial": "serial_NW",
+            "serial": "IIJRDVHBZJSEIEFL",
             "map": [
 Q_NW
             ]
@@ -40,14 +40,14 @@ Q_NE
         },
         {
             "type": "fadecandy",
-            "serial": "...",
+            "serial": "VPWYRFOMPNASAQXT",
             "map": [
 Q_SW
             ]
         },
         {
             "type": "fadecandy",
-            "serial": "...",
+            "serial": "ZRGUDLCUZHEMSSJZ",
             "map": [
 Q_SE
             ]
