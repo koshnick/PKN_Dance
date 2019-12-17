@@ -2,15 +2,18 @@
 Project: PKN Lighted dance floor / LED Art 
 
 """
+print "artnet_to_opc starting..."
 
 # Fadecandy stuff
 import opc
+print "opc imported..."
 
 # Artnet stuff
 from twisted.internet import protocol, endpoints
 from twisted.internet.protocol import DatagramProtocol
 from twisted.internet import reactor
 import time
+print "twisted imported..."
 
 opc_addr = "127.0.0.1:7890"
 leds_per_universe = 128
@@ -20,6 +23,7 @@ dry_run_client = False
 if dry_run_client:
     print "initialize OPC socket..."
 else:
+    print "not a dry run..."
     client = opc.Client(opc_addr)
     if not client.can_connect():
 		raise Exception('unable to connect'	)
@@ -89,6 +93,8 @@ class ArtNet(DatagramProtocol):
                     universe_offset += 1
                 self.write_universe(universe, universe_pixels)
 
-	
+print "everything loaded..."
 reactor.listenUDP(6454, ArtNet())
+print "listening UDP 6454..."
 reactor.run()
+print "reactor running..."
